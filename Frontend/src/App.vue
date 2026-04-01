@@ -11,7 +11,7 @@ import draggable from "vuedraggable";
     <!-- ADD TASK FORM -->
     <div class="flex justify-center mb-6">
       <div
-        class="flex gap-3 w-full max-w-3xl bg-white/5 backdrop-blur-lg p-4 rounded-xl border border-white/10 shadow-lg">
+        class="flex flex-col md:flex-row gap-3 w-full max-w-3xl bg-white/5 backdrop-blur-lg p-4 rounded-xl border border-white/10 shadow-lg">
         <!-- Title -->
         <input v-model="title" placeholder="Task title..."
           class="flex-1 px-3 py-2 rounded-lg bg-white/10 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400" />
