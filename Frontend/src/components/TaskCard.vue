@@ -18,15 +18,13 @@ const emit = defineEmits(["edit", "delete"]);
       <div class="flex gap-2">
         <button
           @click="$emit('edit', task)"
-          class="text-blue-400 hover:text-blue-300 text-sm"
-        >
+          class="text-blue-400 hover:text-blue-300 text-sm">
           ✏️
         </button>
 
         <button
           @click="$emit('delete', task._id)"
-          class="text-red-400 hover:text-red-300 text-sm"
-        >
+          class="text-red-400 hover:text-red-300 text-sm">
           🗑
         </button>
       </div>

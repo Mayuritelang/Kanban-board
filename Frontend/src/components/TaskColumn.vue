@@ -42,8 +42,7 @@ const colorMap = {
     chosen-class="chosen"
     drag-class="drag"
     class="flex-1 overflow-y-auto space-y-2 pr-1"
-    @change="(e) => $emit('drop', e, status)"
-    >
+    @change="(e) => $emit('drop', e, status)">
       <template #item="{ element }">
         <TaskCard
           :task="element"

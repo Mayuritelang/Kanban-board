@@ -28,6 +28,7 @@ mongoose
       console.log(`Server running on port ${process.env.PORT}`);
     });
   })
+  
   .catch((err) => {
     console.log("DB Connection Error", err);
   });

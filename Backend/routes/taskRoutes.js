@@ -12,7 +12,6 @@ router.post("/tasks", async (req, res) => {
   }
 });
 
-
 // Get All Tasks
 router.get("/tasks", async (req, res) => {
   try {
@@ -22,7 +21,6 @@ router.get("/tasks", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 
 // Update Task Status (Drag & Drop)
 router.patch("/tasks/:id", async (req, res) => {
@@ -37,7 +35,6 @@ router.patch("/tasks/:id", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 
 // Delete Task
 router.delete("/tasks/:id", async (req, res) => {

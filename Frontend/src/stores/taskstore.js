@@ -28,7 +28,6 @@ export const useTaskStore = defineStore("task", {
     if (index !== -1) {
       this.tasks[index] = { ...this.tasks[index], ...data };
     }
-
     try {
       await API.patch(`/tasks/${id}`, data);
     } catch (err) {
@@ -39,7 +38,6 @@ export const useTaskStore = defineStore("task", {
 
   async deleteTask(id) {
     this.tasks = this.tasks.filter(t => t._id !== id);
-
     try {
       await API.delete(`/tasks/${id}`);
     } catch (err) {
