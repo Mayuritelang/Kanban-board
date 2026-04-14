@@ -29,7 +29,7 @@
 
 <script setup>
 import { onMounted, ref, computed } from "vue";
-import { useTaskStore } from "../stores/taskStore";
+import { useTaskStore } from "../stores/taskstore";
 
 import Header from "../components/Header.vue";
 import TaskForm from "../components/TaskForm.vue";

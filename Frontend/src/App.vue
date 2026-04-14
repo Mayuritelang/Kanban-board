@@ -5,5 +5,5 @@
 </template>
 
 <script setup>
-import KanbanBoard from "./views/KanbanBoard.vue";
+import KanbanBoard from "./views/kanbanBoard.vue";
 </script>

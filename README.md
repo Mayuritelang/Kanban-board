@@ -1,7 +1,8 @@
 Kanban Board (MEVN Stack)
 A full-stack draggable Kanban Board built using MongoDB, Express.js, Vue.js 3, and Node.js.
 
- Features
+--> Features
+
 - Add tasks with title & description
 - Drag & Drop tasks between:
   - To Do
@@ -12,14 +13,14 @@ A full-stack draggable Kanban Board built using MongoDB, Express.js, Vue.js 3, a
 - Task count per column
 - Data stored in MongoDB Atlas
 
- Tech Stack
+--> Tech Stack
 
 - Frontend: Vue.js 3 (Composition API), Tailwind CSS, vuedraggable
 - Backend: Node.js, Express.js
 - Database: MongoDB Atlas
 - HTTP Client: Axios
 
- Project Structure
+--> Project Structure
 
  Kanban-board/
 │
@@ -39,10 +40,51 @@ A full-stack draggable Kanban Board built using MongoDB, Express.js, Vue.js 3, a
 └── .gitignore
 └── README.md
 
-Backend Implementation
+--> Setup Instructions
+
+1. Clone Repository
+git clone <your-repo-link>
+cd Kanban-board
+
+2. Backend Setup
+cd Backend
+npm install
+
+Create a .env file:
+MONGO_URI=your_mongodb_connection
+PORT=5000
+
+Run backend:
+npm run dev
+
+3. Frontend Setup
+cd Frontend
+npm install
+npm run dev
+
+Frontend runs on:
+http://localhost:5173
+Backend runs on:
+http://localhost:5000
+
+--> Data Flow (Frontend ↔ Backend)
+
+1. Vue frontend fetches tasks using GET /api/tasks
+2. Tasks are stored in Pinia store
+3. Tasks are filtered into columns (todo, inprogress, done)
+4. When user drags a task:
+   → vuedraggable triggers drop event
+   → PATCH /api/tasks/:id is called with updated status
+5. Backend updates MongoDB
+6. UI updates instantly (optimistic update)
+7. If API fails:
+   → store re-fetches data to maintain consistency
+
+--> Backend Implementation
+
 The backend of this application is built using **Node.js and Express.js**, and it connects to **MongoDB Atlas** using Mongoose.
 
- Server Setup
+--> Server Setup
 - Express is used to create the server
 - Middleware used:
   - `cors` → to allow cross-origin requests
@@ -54,14 +96,14 @@ mongoose.connect(process.env.MONGO_URI)
 
 Once connected, the server runs on the defined port.
 
- Database Schema (Mongoose)
+--> Database Schema (Mongoose)
 A `Task` model is created with the following fields:
 
 - `title` (String, required)
 - `description` (String, optional)
 - `status` (String: "todo", "inprogress", "done")
 
-API Routes
+--> API Routes
 All routes are defined in `routes/taskRoutes.js` and prefixed with `/api`.
 
 1. Create Task
@@ -88,21 +130,24 @@ All routes are defined in `routes/taskRoutes.js` and prefixed with `/api`.
   - Backend updates the task in MongoDB
   - Updated data is returned to frontend
 
- Environment Variables
+--> Environment Variables
+
 The backend uses a `.env` file:
 MONGO_URI=your_mongodb_connection_string
 PORT=5000
 
-Notes
+--> Notes
+
 - MongoDB Atlas is used as a cloud database
 - Error handling is implemented using try-catch blocks
 - All APIs return JSON responses
 
 
-Frontend Implementation
+--> Frontend Implementation
+
 The frontend is built using **Vue.js 3 (Composition API)** with **Tailwind CSS** for styling and **vuedraggable** for drag-and-drop functionality.
 
- API Integration
+--> API Integration
 Axios is used to communicate with the backend.
 const API = axios.create({
 baseURL: "http://localhost:5000/api",
@@ -110,7 +155,7 @@ baseURL: "http://localhost:5000/api",
 
 All API requests (GET, POST, PATCH, DELETE) are made using this instance.
 
-State Management (Composition API)
+--> State Management (Composition API)
 Vue 3 Composition API is used with `ref()` for managing state:
 - `tasks` → stores all tasks
 - `todoTasks`, `progressTasks`, `doneTasks` → categorized tasks
@@ -118,7 +163,7 @@ Vue 3 Composition API is used with `ref()` for managing state:
 - `editTaskData` → data for editing
 - `showEditModal` → modal visibility
 
- Data Fetching
+--> Data Fetching
 - On component mount (`onMounted`), tasks are fetched from backend
 - Tasks are filtered into 3 categories based on status:
   - `todo`
@@ -152,7 +197,7 @@ When a task is dropped:
 PATCH /tasks/:id
 - UI is refreshed after update
 
-UI & Styling
+--> UI & Styling
 - Tailwind CSS is used for styling
 - Responsive layout using grid system
 - Glassmorphism UI design (blur, transparency)
@@ -162,7 +207,7 @@ Responsiveness
 - Works on both mobile and desktop
 - Grid layout adapts based on screen size
 
-Key Highlights
+--> Key Highlights
 - Real-time UI updates after every operation
 - Clean separation of concerns (API, UI, state)
 - Reusable logic using Composition API
